@@ -20,6 +20,12 @@ defmodule Scratchy.PostView do
       title: post.title,
       body: post.body,
       category_id: post.category_id,
+      slug: post.slug,
+      featured: post.featured,
+      status: post.status,
+      meta_title: post.meta_title,
+      meta_description: post.meta_description,
+      author_id: post.author_id,
       created_at: post.inserted_at}
   end
 end

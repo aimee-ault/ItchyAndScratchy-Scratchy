@@ -3,12 +3,16 @@ defmodule Scratchy.Category do
 
   schema "categories" do
     field :name, :string
-
+    has_many :posts, Scratchy.Post
     timestamps
   end
 
   @required_fields ~w(name)
   @optional_fields ~w()
+
+  def with_posts(query) do
+    from q in query, preload: [posts: :posts]
+  end
 
   @doc """
   Creates a changeset based on the `model` and `params`.

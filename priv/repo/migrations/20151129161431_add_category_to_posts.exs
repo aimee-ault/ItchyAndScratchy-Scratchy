@@ -3,7 +3,7 @@ defmodule Scratchy.Repo.Migrations.AddCategoryToPosts do
 
   def change do
     alter table(:posts) do
-      add :category_id, :string
+      add :category_id, :integer
     end
   end
 end

@@ -1,11 +1,18 @@
 defmodule Scratchy.Post do
-  use Ecto.Model
+  use Scratchy.Web, :model
 
   schema "posts" do
     field :title, :string
     field :body, :string
-    field :category_id, :string
+    field :slug, :string
+    field :image, :string
+    field :status, :string
+    field :featured, :boolean
+    field :meta_title, :string
+    field :meta_description, :string
     
+    belongs_to :author, Scratchy.Author
+    belongs_to :category, Scratchy.Category
     timestamps
   end
 

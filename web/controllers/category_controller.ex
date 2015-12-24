@@ -27,7 +27,11 @@ defmodule Scratchy.CategoryController do
   end
 
   def show(conn, %{"id" => id}) do
+    #IO.puts "hey"
     category = Repo.get!(Category, id)
+    #IO.puts category
+    posts = Repo.all(assoc(category, :posts))
+    # category = Repo.all(from(c in Category,  preload: :posts))
     render(conn, "show.json", category: category)
   end
 
