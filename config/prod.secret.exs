@@ -9,5 +9,5 @@ config :scratchy, Scratchy.Endpoint,
 # Configure your database
 config :scratchy, Scratchy.Repo,
   adapter: Ecto.Adapters.Postgres,
-  url: { :system, "DATABASE_URL" }
+  url: { :system, "DATABASE_URL" },
   pool_size: 20
