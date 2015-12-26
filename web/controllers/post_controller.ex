@@ -5,11 +5,12 @@ defmodule Scratchy.PostController do
   plug :scrub_params, "post" when action in [:create, :update]
 
   def index(conn, _params) do
-    paginator = Post |> Repo.paginate(_params)
+    page = from(p in Post, where: p.status == "published")
+     |> Repo.paginate(_params)
     render conn, "index.json", 
-      posts: paginator.entries,
-      total_pages: paginator.total_pages, 
-      page_number: paginator.page_number
+      posts: page.entries,
+      total_pages: page.total_pages, 
+      page_number: page.page_number
   end
 
   def create(conn, %{"post" => post_params}) do
